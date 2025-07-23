@@ -1,3 +1,5 @@
+from stats import get_word_count
+
 def get_book_text(r):
     with open(r) as f:
         file_contents = f.read()
@@ -8,10 +10,6 @@ def main():
     return test
 
 main()
-
-def get_word_count(test):
-    count = test.split()
-    word_count = len(count)
-    print(f"{word_count} words found in the document")
-
 get_word_count(main())
+
+

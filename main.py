@@ -1,6 +1,7 @@
 from stats import get_word_count
 from stats import get_char_count
 from stats import sort_report
+import sys
 
 def get_book_text(r):
     with open(r) as f:
@@ -8,11 +9,15 @@ def get_book_text(r):
     return(file_contents)
 
 def main():
-    test = get_book_text("books/frankenstein.txt")
+    try:
+        test = get_book_text(sys.argv[1])
+    except Exception as e:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
     characters = get_char_count(test)
     dic = sort_report(characters)
     print("============ BOOKBOT ============")
-    print("Analyzing book found at books/frankenstein.txt...")
+    print(f"Analyzing book found at {sys.argv[1]}...")
     print("----------- Word Count ----------")
     get_word_count(test)
     print("--------- Character Count -------")
